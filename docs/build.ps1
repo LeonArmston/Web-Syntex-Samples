@@ -8,7 +8,7 @@ foreach($folder in $foldersToMoveToDocs)
 {
 
   New-Item -Path ./main/docs -Name $folder -ItemType "directory"
-  copy-item -Force ./$folder/* -Destination ./docs/$folder -Recurse
+  copy-item -Force ./main/$folder/* -Destination ./main/docs/$folder -Recurse
 
 }
 <#
