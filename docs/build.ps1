@@ -36,7 +36,7 @@ docfx metadata ./main/docs/docfx.json --warningsAsErrors $args
 docfx build ./main/docs/docfx.json --warningsAsErrors $args
 
 # Copy the created site to the pnpcoredocs folder (= clone of the gh-pages branch)
-Remove-Item ./gh-pages/docs/* -Recurse -Force
+#Remove-Item ./gh-pages/docs/* -Recurse -Force
 Remove-Item ./gh-pages/models/* -Recurse -Force
 Remove-Item "./gh-pages/scenario samples/*" -Recurse -Force
 #Remove-Item ./gh-pages/scenario-samples/* -Recurse -Force
