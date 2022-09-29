@@ -3,8 +3,8 @@
 $ErrorActionPreference = "Stop"
 Set-StrictMode -Version 2.0
 
-New-Item -Path ./main/docs -Name "demos" -ItemType "directory"
-copy-item -Force ./main/models/* -Destination ./main/docs/demos
+New-Item -Path ./main/docs -Name "models" -ItemType "directory"
+copy-item -Force ./main/models/* -Destination ./main/docs/models
 Get-item ./main/models/* | Foreach-Object {
   if($_.PSIsContainer){
       $_.BaseName
