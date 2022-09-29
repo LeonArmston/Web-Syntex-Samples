@@ -36,10 +36,10 @@ Get-item ./main/models/* | Foreach-Object {
 docfx build ./main/docs/docfx.json --warningsAsErrors $args
 
 # Copy the created site to the pnpcoredocs folder (= clone of the gh-pages branch)
-Remove-Item ./gh-pages/articles/* -Recurse -Force
-Remove-Item ./gh-pages/contributing/* -Recurse -Force
+Remove-Item ./gh-pages/docs/* -Recurse -Force
 Remove-Item ./gh-pages/models/* -Recurse -Force
+Remove-Item "./gh-pages/scenario samples/*" -Recurse -Force
 Remove-Item ./gh-pages/scenario-samples/* -Recurse -Force
 Remove-Item ./gh-pages/scripts/* -Recurse -Force
-Remove-Item ./gh-pages/site-templates/* -Recurse -Force
-#copy-item -Force -Recurse ./main/docs/_site/* -Destination ./gh-pages
+Remove-Item "./gh-pages/site templates/*" -Recurse -Force
+copy-item -Force -Recurse ./main/docs/_site/* -Destination ./gh-pages
