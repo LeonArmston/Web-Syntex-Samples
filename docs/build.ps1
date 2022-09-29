@@ -32,7 +32,7 @@ Get-item ./main/models/* | Foreach-Object {
 
 
 
-#docfx metadata ./dev/docs/docfx.json --warningsAsErrors $args
+docfx metadata ./main/docs/docfx.json --warningsAsErrors $args
 docfx build ./main/docs/docfx.json --warningsAsErrors $args
 
 # Copy the created site to the pnpcoredocs folder (= clone of the gh-pages branch)
