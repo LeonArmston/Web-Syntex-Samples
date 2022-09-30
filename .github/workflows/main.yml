@@ -22,8 +22,8 @@ jobs:
     - name: Checkout dev branch
       uses: actions/checkout@v2
       with: 
-        ref: dev
-        path: dev
+        ref: main
+        path: main
     # Checks-out gh-pages branch
     - name: Checkout dev branch
       uses: actions/checkout@v2
