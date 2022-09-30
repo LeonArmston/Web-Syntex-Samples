@@ -11,26 +11,6 @@ foreach($folder in $foldersToMoveToDocs)
   copy-item -Force ./main/$folder/* -Destination ./main/docs/$folder -Recurse
 
 }
-<#
-New-Item -Path ./main/docs -Name "models" -ItemType "directory"
-copy-item -Force ./models/* -Destination ./docs/models -Recurse
-New-Item -Path ./main/scenario-samples -Name "scenario-samples" -ItemType "directory"
-copy-item -Force ./models/* -Destination ./docs/models -Recurse
-Get-item ./main/models/* | Foreach-Object {
-  if($_.PSIsContainer){
-      $_.BaseName
-      Copy-Item "./main/models/$($_.Name)/*.md" -Destination "./main/docs/models/$($_.Name)" -Force
-      Copy-Item "./main/models/$($_.Name)/*.png" -Destination "./main/docs/models/$($_.Name)" -Force
-
-      if(Test-Path "./main/models/$($_.Name)/docs-images"){
-        New-Item -Path "./main/docs/models/$($_.Name)/" -Name "docs-images" -ItemType "directory" -Force
-        Copy-Item "./main/models/$($_.Name)/docs-images/*.png" -Destination "./main/docs/models/$($_.Name)/docs-images" -Force
-      }
-  }
-}#>
-
-
-
 
 docfx metadata ./main/docs/docfx.json --warningsAsErrors $args
 docfx build ./main/docs/docfx.json --warningsAsErrors $args
