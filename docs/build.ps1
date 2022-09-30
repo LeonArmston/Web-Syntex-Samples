@@ -8,31 +8,11 @@ foreach($folder in $foldersToMoveToDocs)
 {
 
   New-Item -Path ./main/docs -Name $folder -ItemType "directory"
-  copy-item -Force ./$folder/* -Destination ./docs/$folder -Recurse
+  copy-item -Force ./main/$folder/* -Destination ./main/docs/$folder -Recurse
 
 }
-<#
-New-Item -Path ./main/docs -Name "models" -ItemType "directory"
-copy-item -Force ./models/* -Destination ./docs/models -Recurse
-New-Item -Path ./main/scenario-samples -Name "scenario-samples" -ItemType "directory"
-copy-item -Force ./models/* -Destination ./docs/models -Recurse
-Get-item ./main/models/* | Foreach-Object {
-  if($_.PSIsContainer){
-      $_.BaseName
-      Copy-Item "./main/models/$($_.Name)/*.md" -Destination "./main/docs/models/$($_.Name)" -Force
-      Copy-Item "./main/models/$($_.Name)/*.png" -Destination "./main/docs/models/$($_.Name)" -Force
 
-      if(Test-Path "./main/models/$($_.Name)/docs-images"){
-        New-Item -Path "./main/docs/models/$($_.Name)/" -Name "docs-images" -ItemType "directory" -Force
-        Copy-Item "./main/models/$($_.Name)/docs-images/*.png" -Destination "./main/docs/models/$($_.Name)/docs-images" -Force
-      }
-  }
-}#>
-
-
-
-
-#docfx metadata ./dev/docs/docfx.json --warningsAsErrors $args
+docfx metadata ./main/docs/docfx.json --warningsAsErrors $args
 docfx build ./main/docs/docfx.json --warningsAsErrors $args
 
 # Copy the created site to the pnpcoredocs folder (= clone of the gh-pages branch)
@@ -42,4 +22,4 @@ Remove-Item ./gh-pages/models/* -Recurse -Force
 Remove-Item ./gh-pages/scenario-samples/* -Recurse -Force
 Remove-Item ./gh-pages/scripts/* -Recurse -Force
 Remove-Item ./gh-pages/site-templates/* -Recurse -Force
-#copy-item -Force -Recurse ./main/docs/_site/* -Destination ./gh-pages
+copy-item -Force -Recurse ./main/docs/_site/* -Destination ./gh-pages

@@ -1,9 +1,10 @@
+
 name: Refresh documentation
 on: 
   push:
     branches:
       # Only update docs for dev branch pushes
-      - main
+      - dev
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -18,7 +19,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}    
     # Checks-out dev branch
-    - name: Checkout main branch
+    - name: Checkout dev branch
       uses: actions/checkout@v2
       with: 
         ref: main
@@ -32,7 +33,7 @@ jobs:
     # Install docfx, stick with version 2.51 as higher versions result in https://github.com/dotnet/docfx/issues/5785 > fixed in 2.56.4+
     - name: Install dependencies
       run: |
-        wget https://github.com/dotnet/docfx/releases/download/v2.56.5/docfx.zip
+        wget https://github.com/dotnet/docfx/releases/download/v2.59.2/docfx.zip
         sudo unzip docfx.zip -d /usr/local/lib/docfx
         rm docfx.zip
         echo '#!/bin/sh' | sudo tee -a /usr/local/bin/docfx > /dev/null
