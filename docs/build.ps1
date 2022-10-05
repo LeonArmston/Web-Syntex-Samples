@@ -5,7 +5,7 @@ $ErrorView = "NormalView"
 Set-StrictMode -Version 2.0
 
 
-$foldersToMoveToDocs = "Articles","models"
+$foldersToMoveToDocs = "articles","models"
 #$foldersToMoveToDocs = "articles","contributing","models","scenario-samples","scripts","site-templates"
 foreach($folder in $foldersToMoveToDocs)
 {
