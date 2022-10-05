@@ -16,7 +16,7 @@ foreach($folder in $foldersToMoveToDocs)
 
 New-Item -Path ./main/docs -Name "models" -ItemType "directory"
 Copy-Item -Force ./main/models/* -Destination ./main/docs/models
-Get-item ./main/samples/* | Foreach-Object {
+Get-item ./main/models/* | Foreach-Object {
   if($_.PSIsContainer){
       $_.BaseName
       Copy-Item "./main/models/$($_.Name)/*.md" -Destination "./main/docs/models/$($_.Name)" -Force
