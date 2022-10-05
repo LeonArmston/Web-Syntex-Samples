@@ -1,6 +1,7 @@
 #!/usr/bin/env pwsh
 
 $ErrorActionPreference = "Stop"
+$ErrorView = "NormalView"
 Set-StrictMode -Version 2.0
 
 <#
