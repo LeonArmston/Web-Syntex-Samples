@@ -4,17 +4,18 @@ $ErrorActionPreference = "Stop"
 $ErrorView = "NormalView"
 Set-StrictMode -Version 2.0
 
-<#
-$foldersToMoveToDocs = "articles","contributing","models","scenario-samples","scripts","site-templates"
+
+$foldersToMoveToDocs = "models",
+#$foldersToMoveToDocs = "articles","contributing","models","scenario-samples","scripts","site-templates"
 foreach($folder in $foldersToMoveToDocs)
 {
 
   New-Item -Path ./main/docs -Name $folder -ItemType "directory"
   copy-item -Force ./main/$folder/* -Destination ./main/docs/$folder -Recurse
 
-}#>
+}
 
-
+<#
 New-Item -Path ./main/docs -Name "models" -ItemType "directory"
 Copy-Item -Force ./main/models/* -Destination ./main/docs/models
 Get-item ./main/models/* | Foreach-Object {
@@ -29,7 +30,7 @@ Get-item ./main/models/* | Foreach-Object {
       }
   }
 }
-
+#>
 ##docfx metadata ./main/docs/docfx.json --warningsAsErrors $args
 docfx build ./main/docs/docfx.json --warningsAsErrors $args
 
