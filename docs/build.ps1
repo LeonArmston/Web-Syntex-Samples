@@ -3,7 +3,7 @@
 $ErrorActionPreference = "Stop"
 Set-StrictMode -Version 2.0
 (Get-Location).Path
-$foldersToMoveToDocs = "articles","contributing","models","scenario-samples","scripts","site-templates"
+$foldersToMoveToDocs = "articles","contributing","models","scenario-samples","scripts","site-templates","Leon"
 foreach($folder in $foldersToMoveToDocs)
 {
 
